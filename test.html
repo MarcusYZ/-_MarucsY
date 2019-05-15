@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <div id="box" style="width:1000px;height:1000px;position:relative;overflow:hidden">
+    <div id="ball" style="width:10px;height:10px;position:absolute;background:red;border-radius: 5px;"></div>
+    </div>
+    <script>
+        var oBall = document.getElementById("ball");
+        var oBox = document.getElementById("box");
+        var x = oBall.style.left;
+        var y = oBall.style.top;
+        var speedX = 2,speedY = 2;
+        var timer = '';
+        function init(){//初始位置
+          var left = Math.random()*100;
+          var top = Math.random()*200;
+          oBall.style.left = left+'px';
+          oBall.style.top = top+'px';
+        }
+        init();
+        function beginMove(ball){//小球运动轨迹
+          clearInterval(ball.timer);
+          ball.timer = setInterval(function(){
+            var leftDistance = ball.style.left + speedX ;
+            var topDistance = ball.style.top + speedY;
+            console.log(leftDistance)
+             if(leftDistance > oBox.style.width - x){//判断边界
+                speedX *= -1;
+                leftDistance = oBox.style.width - x;
+             }else if(leftDistance<0){
+                speedX *=-1;
+                leftDistance = 0; 
+            };
+            if(topDistance > oBox.style.height - y){
+                speedY *= -1;
+                topDistance = oBox.style.height - y;
+            }else if(topDistance<0){
+                speedY *= -1;
+                topDistance = 0;
+            }
+            ball.style.left = leftDistance + 'px';
+            ball.style.top = topDistance + 'px';
+          },1000);
+        }
+        beginMove(oBall);
+    </script>
+</body>
+</html>

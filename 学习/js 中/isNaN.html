@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    if(!Number.isNaN){
+      Number.isNaN = function(n){
+        return (
+          typeof n ==="number" && window.isNaN(n)
+        )
+      }
+    }
+
+    var a = 2/"foo";
+    var b = "fop"
+    Number.isNaN(a);
+    Number.isNaN(b);
+  </script>
+</body>
+</html>
