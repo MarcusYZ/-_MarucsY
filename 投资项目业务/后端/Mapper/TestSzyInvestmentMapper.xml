@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DinvestmentProjectIdTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crc.ims.dao.TestSzyInvestmentMapper">
+  <resultMap id="BaseResultMap" type="com.crc.ims.api.dto.TestSzyInvestmentDTO">
+    <id column="INVESTMENT_ID" jdbcType="VARCHAR" property="investmentId" />
+    <result column="INVESTMENT_PROJECT_ID" jdbcType="VARCHAR" property="investmentProjectId" />
+    <result column="PROJECT_NAME" jdbcType="VARCHAR" property="projectName" />
+    <result column="PROJECT_PEOPLE" jdbcType="VARCHAR" property="projectPeople" />
+    <result column="PEOJECT_MONEY" jdbcType="VARCHAR" property="projectMoney" />
+    <result column="PROJECT_START_DATE" jdbcType="DATE" property="projectStartDate" />
+    <result column="PROJECT_END_DATE" jdbcType="DATE" property="projectEndDate" />
+    <result column="PROJECT_MONEY_ACTUALLY" jdbcType="VARCHAR" property="projectMoneyActually" />
+    <result column="PROJECT_START_DATE_ACTUALLY" jdbcType="DATE" property="projectStartDateActually" />
+    <result column="PROJECT_END_DATE_ACTUALLY" jdbcType="DATE" property="projectEndDateActually" />
+  </resultMap>
+  <select  id="queryInvestment" resultMap="BaseResultMap">
+    select INVESTMENT_ID, INVESTMENT_PROJECT_ID, PROJECT_NAME, PROJECT_PEOPLE, PEOJECT_MONEY, PROJECT_START_DATE, PROJECT_END_DATE, 
+    PROJECT_MONEY_ACTUALLY, PROJECT_START_DATE_ACTUALLY, PROJECT_END_DATE_ACTUALLY from test_szy_investment
+  </select>
+  
+  <select id="queryInvestmentById" resultMap="BaseResultMap">
+  	select INVESTMENT_ID, INVESTMENT_PROJECT_ID, PROJECT_NAME, PROJECT_PEOPLE, PEOJECT_MONEY, PROJECT_START_DATE, PROJECT_END_DATE, 
+    PROJECT_MONEY_ACTUALLY, PROJECT_START_DATE_ACTUALLY, PROJECT_END_DATE_ACTUALLY from test_szy_investment 
+   	<where> investment_project_id=#{investmentProjectId} 
+	    <if test="projectName !=null and projectName !=''">
+	    	and project_name=#{projectName}
+	    </if>
+	    <if test="projectPeople !=null and remindType!=''">
+	    	and project_people=#{projectPeople}
+	    </if> 
+	</where>
+  </select>
+  
+  <insert id="insertInvestment" >
+  	insert into test_szy_investment (INVESTMENT_ID, INVESTMENT_PROJECT_ID, PROJECT_NAME, PROJECT_PEOPLE, PEOJECT_MONEY, PROJECT_START_DATE, PROJECT_END_DATE, 
+      PROJECT_MONEY_ACTUALLY, PROJECT_START_DATE_ACTUALLY, PROJECT_END_DATE_ACTUALLY)
+    values (#{investmentId,jdbcType=VARCHAR},#{investmentProjectId,jdbcType=VARCHAR},#{projectName,jdbcType=VARCHAR},#{projectPeople,jdbcType=VARCHAR},#{projectMoney,jdbcType=VARCHAR},#{projectStartDate,jdbcType=DATE}
+   	  ,#{projectEndDate,jdbcType=DATE},#{projectMoneyActually,jdbcType=VARCHAR},#{projectStartDateActually,jdbcType=DATE},#{projectEndDateActually,jdbcType=DATE})
+   	  
+  </insert>
+  
+  <update id="updataInvsetment">
+    update test_szy_investment 
+    <set>
+      <if test="INVESTMENT_ID != null" >
+      	INVESTMENT_ID = #{investmentId},
+      </if>
+      <if test="INVESTMENT_PROJECT_ID != null" >
+      	INVESTMENT_PROJECT_ID = #{investmentProjectId},
+      </if>
+      <if test="PROJECT_NAME != null" >
+      	PROJECT_NAME = #{projectName},
+      </if>
+      <if test="PROJECT_PEOPLE != null" >
+      	PROJECT_PEOPLE = #{projectPeople},
+      </if>
+      <if test="PEOJECT_MONEY != null" >
+      	PEOJECT_MONEY = #{projectMoney},
+      </if>
+      <if test="PROJECT_START_DATE != null" >
+      	PROJECT_START_DATE = #{projectStartDate},
+      </if>
+      <if test="PROJECT_END_DATE != null" >
+      	PROJECT_END_DATE = #{projectEndDate},
+      </if>
+      <if test="PROJECT_MONEY_ACTUALLY != null" >
+      	PROJECT_MONEY_ACTUALLY = #{projectMoneyActually},
+      </if>
+      <if test="PROJECT_START_DATE_ACTUALLY != null" >
+      	PROJECT_START_DATE_ACTUALLY = #{projectStartDateActually},
+      </if>
+      <if test="PROJECT_END_DATE_ACTUALLY != null" >
+      	PROJECT_END_DATE_ACTUALLY = #{projectEndDateActually},
+      </if>
+    </set>
+    where INVESTMENT_PROJECT_ID = #{investmentProjectId}
+  </update>
+  
+  <delete id="deleteInvestment">
+  	delete from test_szy_investment where  INVESTMENT_PROJECT_ID = #{investmentProjectId}
+  </delete>
+</mapper>
