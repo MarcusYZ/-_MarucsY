@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .tags {
+      display: flex;
+      /* 把父元素变成flex */
+      flex-wrap: wrap;
+      /* wrap允许元素折叠 */
+      flex-direction: row-reverse;
+      /* 排列方向反转 */
+      justify-content: center;
+      /* 沿主轴排列叫做排布，沿辅轴的排列叫对齐 */
+      /* justify-cntent 叫做排布 
+      ，可以使用flex-start，center，flex-end，space-between，space-around*/
+      align-items: flex-end;
+      min-height: 500px;
+      align-content: space-between;
+      border: 1px solid #c9e1f4;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .tags li {
+      max-width: 8em;
+      flex: 1 0 auto;
+      display: inline-block;
+      margin: .5em;
+    }
+    .tags .active {
+      font-size:2em;
+    }
+    .tags a {
+      position: relative;
+      display: block;
+      padding: .25em .5em .25em .25em;
+      background-color: #C9E1F4;
+      color: #28448F;
+      border-radius: 0  .25em .25em 0;
+      line-height: 1.5;
+      text-decoration: none;
+      text-align: center;
+    }
+    .tags a::before {
+      position: absolute;
+      content: '';
+      width: 0;
+      height: 0;
+      border:  1em solid transparent;
+      border-right-width: .5em;
+      border-collapse: #C9E1F4;
+      left: -1.5em;
+      top: 0;
+    }
+    .first-list {
+      order:-1;
+      margin-bottom: auto;
+    }
+  </style>
+</head>
+<body>
+  <ul class="tags">
+    <li ><a href="http://www.baidu.com">Binary planet</a></li>
+    <li class="active"><a href="http://www.baidu.com">adsasdasdasd</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+    <li class="first-list"><a href="http://www.baidu.com">Bisdadasda planet</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+    <li><a href="http://www.baidu.com">Binary planet</a></li>
+  </ul>
+<script>
+  
+</script>
+</body>
+</html>

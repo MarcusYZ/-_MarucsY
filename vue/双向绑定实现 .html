@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="txt" />
+  <span id="sp"></span>
+  <script>
+    var txt = document.getElementById('txt'),
+      sp = document.getElementById('sp'),
+      obj = {}
+
+    // 给对象obj添加msg属性，并设置setter访问器
+    Object.defineProperty(obj, 'msg', {
+      // 设置 obj.msg  当obj.msg反生改变时set方法将会被调用  
+      set: function (newVal) {
+        // 当obj.msg被赋值时 同时设置给 input/span
+        txt.value = 123
+        sp.innerText = 123
+      }
+    })
+
+    // 监听文本框的改变 当文本框输入内容时 改变obj.msg
+    txt.addEventListener('keyup', function (event) {
+      obj.msg = event.target.value
+    })
+  </script>
+</body>
+
+</html>

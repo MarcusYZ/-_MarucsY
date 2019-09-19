@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 单链表的实现 -->
+  <script>
+    class Node{
+      constructor(data){
+        this.data = data;
+        this.next = null
+      }
+    }
+
+    class LinkedList {
+      constructor() {
+        this.head = null
+        this.tail = null
+        this.length = 0
+      }
+      push(data) {
+        const node = new Node(data)
+        if(this.head === null) {
+          this.head = node
+          this.tail = node
+        }
+        this.tail.next = node
+        this.tail = node
+        this.length++
+      }
+      pop() {
+        if(this.empty()){
+          return null
+        }
+        if(this.head === this.tail){
+          this.head = null;
+          this.tail = null;
+          this.length--;
+          return this.tail;
+        }
+        let node = this.tail;
+        let currentNode = this.head;
+        let penultimate;
+        while (currentNode) {
+          if (currentNOde.next === this.tail) {
+            penultimate = currentNode
+            break
+          }
+          currentNode = currentNode.next;
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
